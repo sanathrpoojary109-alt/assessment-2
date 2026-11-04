@@ -27,17 +27,10 @@ from transformers import (
     RobertaTokenizer,
 )
 
-ALL_MODELS = sum(
-    (
-        tuple(conf.pretrained_config_archive_map.keys())
-        for conf in (
-            BertConfig,
-            AlbertConfig,
-            RobertaConfig,
-        )
-    ),
-    (),
-)
+# Transformers 4.x removed ``pretrained_config_archive_map``. This project
+# loads models from local directories, and this legacy alias list is not used
+# elsewhere in the DQN evaluation path.
+ALL_MODELS = ()
 
 MODEL_CLASSES = {
     "bert": (BertConfig, BertModel, BertTokenizer),
@@ -208,3 +201,4 @@ def load_and_process_data(args: dict, filename: str, token_fn: 'function', fake_
 
     dataset = FeverDataset(cached_file, label2id=args.label2id)
     return dataset
+
