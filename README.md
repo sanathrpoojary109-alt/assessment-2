@@ -32,6 +32,13 @@ python src/score_saved_predictions.py output/roberta-large/roberta-ddqn-label_pr
 
 The saved TA checkpoint predictions contain 19,998 records and score 0.7279 FEVER, 0.7835 label accuracy, 0.5475 evidence precision, 0.7992 evidence recall, and 0.6498 F1 with the repository's FEVER scorer. This command scores predictions produced by the archived checkpoint; it does not run new model inference.
 
+Successful scorer output:
+
+```text
+Records: 19998
+FEVER: 0.7279 | Label accuracy: 0.7835 | Evidence precision: 0.5475 | Evidence recall: 0.7992 | F1: 0.6498
+```
+
 ## Running model training and evaluation
 
 The shell scripts in this repository reproduce the original research pipeline and expect a Linux or WSL environment, the historical Python/PyTorch/Transformers dependencies listed below, and additional artifacts that are not included in this checkout. In particular, full training and evaluation require:
