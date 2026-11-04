@@ -1,0 +1,14 @@
+**/__pycache__/*
+data/bert/roberta-large/*
+!data/bert/roberta-large/README.md
+data/fever/fever.db
+data/glue/*
+!data/glue/README.md
+data/dqn/*
+!data/dqn/README.md
+data/retrieved/*
+!data/retrieved/README.md
+output/*
+!output/README.md
+**/*.py[cod]
+**/*.zip
