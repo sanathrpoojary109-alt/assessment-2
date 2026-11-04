@@ -22,6 +22,16 @@ The development split contains 19,998 records, with 6,666 examples per label:
 
 ![Screen capture of the successful FEVER development-data validation](docs/screenshots/fever-dev-validation.png)
 
+## Score the saved DQN-FV development predictions
+
+The original project's public [Google Drive folder](https://drive.google.com/drive/folders/1armZDd2fch8RFH09rfswAIwbdsx_c2QW) contains `data.zip` and `checkpoints.zip`. After extracting `checkpoints.zip` into the repository root, score the archived development predictions with:
+
+```bash
+python src/score_saved_predictions.py output/roberta-large/roberta-ddqn-label_priority-5e-6-TA-3/best-checkpoint/dev_precise_with_post_processing.jsonl
+```
+
+The saved TA checkpoint predictions contain 19,998 records and score 0.7279 FEVER, 0.7835 label accuracy, 0.5475 evidence precision, 0.7992 evidence recall, and 0.6498 F1 with the repository's FEVER scorer. This command scores predictions produced by the archived checkpoint; it does not run new model inference.
+
 ## Running model training and evaluation
 
 The shell scripts in this repository reproduce the original research pipeline and expect a Linux or WSL environment, the historical Python/PyTorch/Transformers dependencies listed below, and additional artifacts that are not included in this checkout. In particular, full training and evaluation require:
@@ -57,4 +67,5 @@ The repository includes `train.jsonl`, `shared_task_dev.jsonl`, and `shared_task
   year={2021}
 }
 ```
+
 
