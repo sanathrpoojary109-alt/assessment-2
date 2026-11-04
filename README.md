@@ -39,6 +39,10 @@ Records: 19998
 FEVER: 0.7279 | Label accuracy: 0.7835 | Evidence precision: 0.5475 | Evidence recall: 0.7992 | F1: 0.6498
 ```
 
+Screenshot of the successful scorer run:
+
+![Python shell output showing FEVER, label accuracy, evidence precision, evidence recall, and F1](docs/screenshots/fever-scorer-output.jpg)
+
 ## Running model training and evaluation
 
 The shell scripts in this repository reproduce the original research pipeline and expect a Linux or WSL environment, the historical Python/PyTorch/Transformers dependencies listed below, and additional artifacts that are not included in this checkout. In particular, full training and evaluation require:
