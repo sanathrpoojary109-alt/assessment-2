@@ -31,20 +31,18 @@ def run_eval(args):
     agent = Agent(args)
     agent.to(args.device)
     agent.load(args.checkpoint)
-    eval_data = load_and_process_data(args,
-                                      os.path.join(args.data_dir,
-                                                   'dev_v6.jsonl' if args.do_eval else 'test_v6.jsonl'),
-                                      agent.token)
     logger.info('[1] Searching thresholds')
-    filepath = os.path.join(args.checkpoint, 'decision_seq_result.json')
-    if not os.path.exists(filepath):
+    dev_filepath = os.path.join(args.checkpoint, 'decision_seq_result.json')
+    dev_data = None
+    if not os.path.exists(dev_filepath):
         logger.info('[1.1] Computing candidates of precise evidences and scores')
-        dev_data = eval_data if args.do_eval else \
-                load_and_process_data(args,
-                                      os.path.join(args.data_dir, 'dev_v6.jsonl'),
-                                      agent.token)
+        dev_data = load_and_process_data(
+            args,
+            os.path.join(args.data_dir, 'dev_v6.jsonl'),
+            agent.token
+        )
         evaluate(args, agent, args.checkpoint, dev_data, is_eval=True, print_log=False)
-    alphas = auto_threshold_search(filepath)
+    alphas = auto_threshold_search(dev_filepath)
     field_names, data = list(zip(*list(map(lambda x: ['alpha_%s' % x[0], x[1]],
                                            alphas['alpha'].items()))))
     title = 'LA: %.5f (T: %.5f, F: %.5f, N: %.5f)' % (alphas['LA']['total'], \
@@ -55,9 +53,14 @@ def run_eval(args):
 
     logger.info('[2] Computing target evidence and label')
     
-    filepath = filepath if args.do_eval else os.path.join(args.checkpoint, 'test-decision_seq_result.json')
+    filepath = dev_filepath if args.do_eval else os.path.join(args.checkpoint, 'test-decision_seq_result.json')
     logger.info('[2.1] Computing candidate precise evidences and scores')
     if not os.path.exists(filepath):
+        eval_data = dev_data if args.do_eval else load_and_process_data(
+            args,
+            os.path.join(args.data_dir, 'test_v6.jsonl'),
+            agent.token
+        )
         evaluate(args, agent, args.checkpoint, eval_data, is_eval=args.do_eval, print_log=False)
     candidate_result = json.load(open(filepath, 'r'))
 
@@ -119,3 +122,4 @@ if __name__ == '__main__':
     logger.info(vars(args))
     
     run_eval(args)
+
