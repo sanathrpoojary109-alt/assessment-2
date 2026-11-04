@@ -20,7 +20,7 @@ The validator checks each JSONL record for valid JSON, required `id`, `claim`, a
 
 The development split contains 19,998 records, with 6,666 examples per label:
 
-![Screen capture of the successful FEVER development-data validation](docs/screenshots/fever-dev-validation.png)
+![Screen capture of the successful FEVER development-data validation](docs/screenshots/fever-dev-validation.jpg)
 
 ## Score the saved DQN-FV development predictions
 
