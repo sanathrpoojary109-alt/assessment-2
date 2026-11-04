@@ -43,6 +43,12 @@ Screenshot of the successful scorer run:
 
 ![Python shell output showing FEVER, label accuracy, evidence precision, evidence recall, and F1](docs/screenshots/fever-scorer-output.jpg)
 
+## Successful project evaluation run
+
+The screenshot below shows `src/run_eval.py` completing evaluation on all 19,998 development records and printing FEVER, label accuracy, evidence precision, evidence recall, and F1. It reuses the checkpoint's saved decision sequences; it does not regenerate model decisions through fresh inference.
+
+![Successful DQN-FV development evaluation output](docs/screenshots/dqn-evaluation-success.jpg)
+
 ## Running model training and evaluation
 
 The shell scripts in this repository reproduce the original research pipeline and expect a Linux or WSL environment, the historical Python/PyTorch/Transformers dependencies listed below, and additional artifacts that are not included in this checkout. In particular, full training and evaluation require:
