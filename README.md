@@ -4,7 +4,7 @@ This repository contains the DQN-FV research implementation and FEVER 1.0 datase
 
 ## Quick validation
 
-The included FEVER development set can be checked without installing machine-learning packages. Python 3.8 or later is recommended for this utility.
+The included FEVER development set can be checked without installing machine-learning packages. Python 3.9 or later is recommended for this utility.
 
 ```powershell
 python src/validate_dataset.py data/fever/shared_task_dev.jsonl
