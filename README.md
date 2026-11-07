@@ -86,3 +86,6 @@ The repository includes `train.jsonl`, `shared_task_dev.jsonl`, and `shared_task
 ```
 
 
+## GradeWise AI demo
+
+[Open the GradeWise AI assessment app in Google AI Studio](https://ai.studio/apps/9c908663-60be-4185-b2e3-696e4d4ac237)
